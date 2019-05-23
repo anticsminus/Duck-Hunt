@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     public void Resume()
     {
         PauseMenu.SetActive(false);
+        Paused = false;
         Time.timeScale = 1;
     }
 
@@ -41,7 +42,7 @@ public class UIManager : MonoBehaviour
             Paused = !Paused;
             PauseMenu.SetActive(Paused);
         }
-        if (Paused == true)
+        if (Paused == true || PauseMenu.active == true)
         {
             Time.timeScale = 0;
         }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Duck Hunt/_Scenes/Main Level.unity
     guid: 84f580c6869510248aaf6041aa25c242
+  - enabled: 1
+    path: Assets/Duck Hunt/_Scenes/Achievements.unity
+    guid: 9dc71c9c4d10e754c9bb5e74c1b15c6a
   m_configObjects: {}
