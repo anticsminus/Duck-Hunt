@@ -36,6 +36,12 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        pause();
+    }
+
+
+    private void pause()
+    {
         CurentTime = Time.time;
         if (Input.GetKeyDown(KeyCode.Escape))
         {

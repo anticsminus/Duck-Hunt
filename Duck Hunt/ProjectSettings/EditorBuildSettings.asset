@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Duck Hunt/_Scenes/Main Menu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Duck Hunt/_Scenes/Main Level.unity
+    path: Assets/Duck Hunt/_Scenes/Leaderboard.unity
+    guid: cb19018dafa18d743a1e68d08dc6fbf6
+  - enabled: 1
+    path: Assets/Duck Hunt/_Scenes/Maps/Main Level.unity
     guid: 84f580c6869510248aaf6041aa25c242
   - enabled: 1
     path: Assets/Duck Hunt/_Scenes/Achievements.unity

@@ -22,7 +22,7 @@ public class Achievements : MonoBehaviour
     void AchievementDisplay()
     {
 
-       // anim.SetBool("isHidden", !isTrue);
+       //        anim.SetBool("isHidden", !isTrue);
 
     }
 
