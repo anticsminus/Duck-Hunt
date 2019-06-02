@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,10 +11,7 @@ public class ScenesManager : MonoBehaviour
     public static ScenesManager instance = null;
     private Animator anim;
     private Image fadeImage;
-    public GameObject fadeOverlay, LoadingUI;
-
-    public EventTrigger returnToMainFromAchievements;
-
+    public GameObject fadeOverlay, LoadingUI, ReturnToMain, SettingButton, StartGameButton, AchievementsButton, LeaderboardButton;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,6 +32,11 @@ public class ScenesManager : MonoBehaviour
 
     public IEnumerator LoadArea(string sceneName)
     {
+        if (anim == null)
+            anim = GameObject.Find("FadeOutImage").GetComponent<Animator>();
+        if (fadeImage == null)
+            fadeImage = GameObject.Find("FadeOutImage").GetComponent<Image>();
+
         //get references to animator and image component 
         fadeImage.enabled = true;
         //turn control UI off and loading UI on
@@ -53,14 +56,15 @@ public class ScenesManager : MonoBehaviour
         Debug.Log("loading scene:" + SceneManager.GetActiveScene());
 
         yield return new WaitUntil(() => SceneManager.GetActiveScene().isLoaded);
-
+        LoadingUI.SetActive(false);
         //set FadeOUt to false on the animator so our image will fade back in 
         anim.SetBool("FadeOut", false);
 
         //wait until the fade image is completely transparent (alpha = 0) and then turn loading UI off and control UI back on
         yield return new WaitUntil(() => fadeImage.color.a == 0);
+        fadeImage.enabled = false;
 
-        LoadingUI.SetActive(false);
+        StopCoroutine(LoadArea(sceneName));
 
         //if we have not destroyed the control UI, set it to active
 
@@ -73,11 +77,29 @@ public class ScenesManager : MonoBehaviour
 
     public void checkButtons()
     {
-        if (SceneManager.GetActiveScene().name == "Achievements")
-            returnToMainFromAchievements = GameObject.Find("Main Menu Button").GetComponent<EventTrigger>();
+        if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            if (StartGameButton == null)
+            {
+                StartGameButton = GameObject.Find("Start");
+                StartGameButton.GetComponent<Button>().onClick.AddListener(StartGame);
+            }
+            if (AchievementsButton == null)
+            {
+                AchievementsButton = GameObject.Find("Achievements");
+                AchievementsButton.GetComponent<Button>().onClick.AddListener(Achievements);
+            }
+            if (LeaderboardButton == null)
+            {
+                LeaderboardButton = GameObject.Find("Leaderboard");
+                LeaderboardButton.GetComponent<Button>().onClick.AddListener(Leaderboard);
+            }
+        }
+    }
 
-        returnToMainFromAchievements.AddListener(EventTriggerType.PointerClick, onClickListener);
-        //GameObject.Find("Main Menu Button").GetComponent<Button>().onClick.AddListener(loadMenu);
+    public string GetCurentScene()
+    {
+        return SceneManager.GetActiveScene().name;
     }
 
     public void loadScene(string levelName)
@@ -85,24 +107,28 @@ public class ScenesManager : MonoBehaviour
         StartCoroutine(LoadArea(levelName));
     }
 
-    void onClickListener(PointerEventData eventData)
-    {
-        StartCoroutine(LoadArea("Main Menu"));
-    }
-
     public void quitGame()
     {
         Application.Quit();
     }
-}
-
-public static class ExtensionMethods
-{
-    public static void AddListener(this EventTrigger trigger, EventTriggerType eventType, System.Action<PointerEventData> listener)
+    public void ReturnToMenu()
     {
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = eventType;
-        entry.callback.AddListener(data => listener.Invoke((PointerEventData)data));
-        trigger.triggers.Add(entry);
+        StartCoroutine(LoadArea("Main Menu"));
     }
+
+    public void StartGame()
+    {
+        StartCoroutine(LoadArea("Main Level"));
+    }
+
+    public void Achievements()
+    {
+        StartCoroutine(LoadArea("Achievements"));
+    }
+
+    public void Leaderboard()
+    {
+        StartCoroutine(LoadArea("Leaderboard"));
+    }
+
 }

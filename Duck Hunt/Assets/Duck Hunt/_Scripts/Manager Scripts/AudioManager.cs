@@ -6,6 +6,8 @@ public class AudioManager: MonoBehaviour
 {
 
     public static AudioManager instance = null;
+    public GameObject MainCamera;
+    public ScenesManager SceneScript;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,5 +20,13 @@ public class AudioManager: MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if(SceneScript.GetCurentScene() != "Main Menu")
+        MainCamera.GetComponent<AudioListener>().enabled = false;
+        else
+        MainCamera.GetComponent<AudioListener>().enabled = true;
     }
 }

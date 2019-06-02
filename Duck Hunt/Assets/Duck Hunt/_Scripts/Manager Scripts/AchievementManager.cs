@@ -78,8 +78,8 @@ public class AchievementManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Chicken Dinner") == 1) 
         {
-            lockedImages[1].SetActive(false);
-            unlockedImages[1].SetActive(true);
+            lockedImages[2].SetActive(false);
+            unlockedImages[2].SetActive(true);
         }
     }
 
@@ -101,6 +101,59 @@ public class AchievementManager : MonoBehaviour
                 break;
 
             case 1:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+
+            case 2:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+
+            case 3:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+
+            case 4:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+
+            case 5:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+
+            case 6:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+
+            case 7:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+            case 8:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+
+            case 9:
+                AchievementTitle.SetText("Chicken Dinner!");
+                AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
+
+                break;
+
+            case 10:
                 AchievementTitle.SetText("Chicken Dinner!");
                 AchievementDescription.SetText("Win your first game, congratulations at eliminating all the ducks!");
 
