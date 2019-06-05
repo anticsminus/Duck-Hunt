@@ -78,8 +78,8 @@ public class AchievementManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Chicken Dinner") == 1) 
         {
-            lockedImages[2].SetActive(false);
-            unlockedImages[2].SetActive(true);
+            lockedImages[1].SetActive(false);
+            unlockedImages[1].SetActive(true);
         }
     }
 
