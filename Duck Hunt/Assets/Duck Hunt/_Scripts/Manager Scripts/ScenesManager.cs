@@ -118,7 +118,7 @@ public class ScenesManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(LoadArea("Main Level"));
+        StartCoroutine(LoadArea("main"));
     }
 
     public void Achievements()
