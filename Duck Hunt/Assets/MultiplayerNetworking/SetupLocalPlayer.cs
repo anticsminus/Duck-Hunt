@@ -99,7 +99,7 @@ public class SetupLocalPlayer : NetworkBehaviour
         if (isLocalPlayer)
         {
             GetComponent<PlayerController>().enabled = true;
-            CameraFollow360.player = this.gameObject.transform;
+            CameraFollow360V1.player = this.gameObject.transform;
         }
         else
         {
