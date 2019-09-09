@@ -42,7 +42,7 @@ public class AchievementManager : MonoBehaviour
 
                 foreach (var go in findLockedImages)
                 {
-                    //Debug.Log(go.name);
+                    //Debug.Log(go.name); 
                     lockedImages[i] = findLockedImages[i]; i++;
                 }
             } i = 0;
@@ -63,7 +63,7 @@ public class AchievementManager : MonoBehaviour
                     //Debug.Log(go.name); -> var for reading names 
                     unlockedImages[i] = findUnlockedImages[i];
 
-                    //TODO: write an actual achievement manager script that parses through player preferences
+                    //TODO: write an actual achievement manager script that parses through player/ preferences
                     //Need to study achievement types from gameplay, this is just a simple UI setup for our game scenes 
                     unlockedImages[i].SetActive(false);
 
@@ -75,7 +75,7 @@ public class AchievementManager : MonoBehaviour
         {
             Debug.Log(e);
         }
-
+        //Example on how to check if achievement has been unlocked and then displaying the correct icon / value dependant on the achievement unlocked
         if (PlayerPrefs.GetInt("Chicken Dinner") == 1) 
         {
             lockedImages[1].SetActive(false);
